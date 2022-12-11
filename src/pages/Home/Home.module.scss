@@ -1,0 +1,52 @@
+body{
+    background-color: #001e3c;
+}
+.wrapper{
+    position: relative;
+    color: #fff;
+    margin-top: 120px;
+    min-height: 1000px;
+}
+.scroll-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff1b01;
+    position: fixed;
+    right: 4%;
+    bottom: 100px;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}
+.wrapper-panigation{
+    display: flex;
+    justify-content: center;
+}
+
+/* .navbar-bottom{
+    display: none;
+}
+ */
+/* Mobie and Tablet: width: < 1024px */
+@media only screen and (max-width: 63.9375em) {
+
+}
+
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+.navbar-bottom{
+    display: block;
+}
+    
+}   
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+
+}

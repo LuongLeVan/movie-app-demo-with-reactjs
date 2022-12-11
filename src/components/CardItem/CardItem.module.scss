@@ -1,0 +1,36 @@
+.wrapper{
+    position: relative;
+    max-width: 300px;
+    margin: 12px;
+    border-radius: 12px;
+
+
+    .image{
+        border-radius: 12px;
+        
+    }
+}
+.mark{
+    position: absolute;
+    top: 6px;
+    left: -3px;
+    line-height: 1.6rem;
+    background-color: red;
+    width: 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding-right: 4px;
+}
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+    .wrapper{
+        width: 100%;
+       margin-left: 50%;
+       transform: translateX(-50%);
+    }
+
+   
+    
+} 

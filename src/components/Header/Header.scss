@@ -1,0 +1,98 @@
+
+.header{
+    height: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.header__wrapper{
+    height: 100%;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+
+.header__menu-item{
+    font-size: 1.4rem;
+    text-decoration: none;
+    margin: 0 12px;
+    color: #fff;
+    position: relative;
+    &:hover{
+        opacity: 0.8;
+        color: #ff1b01;
+    }
+}
+
+.logo{
+    width: 60px;
+    position: absolute;
+    top: 3%;
+    right: 50%;
+    transform: translateX(50%);
+    &:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}
+
+
+.logo__title{
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 6px;
+    &:hover{
+        color: #ff1b01;
+        opacity: 0.8;
+    }
+}
+.header__info-item{
+    font-size: 25px;
+    color: #fff;
+    margin: 0 4px;
+    &:hover{
+        cursor: pointer;
+        color: #ff1b01;
+    }
+}
+.active{
+    color: #ff1b01;
+    border-bottom: 2px solid #ff1b01;
+}
+.shrink {
+    background-color: #000;
+    box-shadow: 0 8px 24px rgba(208, 221, 234, 0.2);
+    height: 70px;
+    margin-bottom: 0;
+    margin-top: 0;
+    z-index: 999999;
+}
+
+
+/* Mobie and Tablet: width: < 1024px */
+@media only screen and (max-width: 63.9375em) {
+ 
+}
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+    .header__menu,
+    .header__infor{
+        display: none;
+    }
+
+   
+    
+}   
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+
+ }
