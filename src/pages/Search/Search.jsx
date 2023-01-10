@@ -31,7 +31,6 @@ const BasicTextFields = () => {
     fetchMovie()
   }, [type, page])
 
-  console.log('page',page);
   return (
     <Helmet title='Search'>
       <div className='wrapper__search'>
