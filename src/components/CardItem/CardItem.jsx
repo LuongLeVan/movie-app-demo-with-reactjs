@@ -3,6 +3,7 @@ import { img_300, unavailable } from '../Config/Config'
 import classNames from 'classnames/bind'
 import styles from './CardItem.module.scss'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -13,14 +14,18 @@ const CardItem = ({
     image,
     title,
     firstDate,
-    mark
+    mark,
+    types,
+    mediaType,
+    secondType
 }) => {
-  console.log(typeof firstDate);
   return (
     <div className={cx('wrapper')} key={id}>
-      <span className={cx('mark')}>{mark===0 ? 7.5 :  mark.toString().slice(0,3)}</span>
-      <img className={cx('image')}  src={image ? `${img_300}${image}` : unavailable} alt="poster" />
-      <h3 className={cx('title')}>{name ? name : title} ({date ? date.slice(0,4) : firstDate })</h3>
+      <Link to={`/${types|| secondType || mediaType === 'movie' ? 'movies' : 'series'}/${id}`}>
+        <span className={cx('mark')}>{mark===0 ? 7.5 :  mark.toString().slice(0,3)}</span>
+        <img className={cx('image')}  src={image ? `${img_300}${image}` : unavailable} alt="poster" />
+        <h3 className={cx('title')}>{name ? name : title} ({date ? date.slice(0,4) : firstDate })</h3>
+      </Link>
       
     </div>
   )

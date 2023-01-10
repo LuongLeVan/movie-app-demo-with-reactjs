@@ -6,15 +6,23 @@ import './Panigation.scss'
 
 
 const PaginationSize = (props) =>  {
-  const  {setPage, totalPage} = props
+  const  {setPage, setPageTV, totalPageTV, totalPage, Movie} = props
     const handlePage = (page) => {
         setPage(page);
-        console.log(page);
+       
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  return (
-    <Stack spacing={3} >
-              <Pagination  count={totalPage} variant="outlined" color="primary" hidePrevButton hideNextButton  onChange={(e) => handlePage(e.target.textContent)}/>
+
+    const handlePageTV = (page) => {
+      setPageTV(page);
+     
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+    return (
+      <Stack spacing={3} >
+              <Pagination  count={Movie ? totalPage :  totalPageTV} variant="outlined" color="primary" hidePrevButton hideNextButton  onChange={(e) => {Movie ? handlePage(e.target.textContent) :handlePageTV(e.target.textContent)}}/>
       
     </Stack>
   );
