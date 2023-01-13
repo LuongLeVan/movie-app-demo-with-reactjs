@@ -12,6 +12,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SeriItem from "./pages/SeriItem/SeriItem";
 function App() {
+
+
+
   const [contentFilter, setContentFilter] = useState([])
   const [page, setPage] = useState(1)
   const [pageTV, setPageTV] = useState(1)
@@ -24,12 +27,24 @@ function App() {
   const [year, setYear] = useState(null)
   const [yearTV, setYearTV] = useState()
   const [listFilm, setListFilm] = useState([])
-
   const [originLanguage, setOriginLanguage] = useState('en')
   const [originLanguageTV, setOriginLanguageTV] = useState('en')
   const [content, setContent] = useState([])
   const [totalPageTrending, setTotalPageTrending] = useState()
   const [pageTrending, setPageTrending] = useState(1)
+  const [typeSearch, setTypeSearch] = useState('movie')
+  const [list, setList] = useState([])
+  const [listTV, setListTV] = useState([])
+  const [pageSearch, setPageSearch] = useState(1)
+  const [pageTVSearch, setPageTVSearch] = useState(1)
+  const [searchText, setSearchText] = useState("")
+  const [contentSearch, setContentSearch] = useState([])
+  const [totalPageSearch, setTotalPageSearch] = useState(null)
+  const [value, setValue] = useState(0)
+  const [pageRandom, setPageRandom] = useState(8)
+  const [pageRandomTV, setPageRandomTV] = useState(8)
+  const [totalPageRandom, setTotalPageRandom] = useState()
+  const [totalPageRandomTV, setTotalPageRandomTV] = useState()
 
 
 
@@ -74,13 +89,53 @@ function App() {
     fetchTrending()
   }, [pageTrending, totalPageTrending])
 
+  const fetchMovieBySearch = async () => {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/search/${typeSearch}?api_key=6de13cb06459580e8f7ab054d9dbb28e&language=en-US&query=${searchText}&page=${pageSearch ? pageSearch : pageTVSearch}&include_adult=false`)
+    setContentSearch(data.results)
+    setTotalPageSearch(data.total_pages)
+  }
+
+
+  useEffect(() => {
+
+    fetchMovieBySearch()
+  }, [typeSearch, pageTVSearch, pageSearch, totalPageSearch])
+
+
+  const randomList = async () => {
+    /* const pageRandom = Math.floor(Math.random() * 100)  */
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${pageRandom}
+      `)
+    setList(data.results)
+    setTotalPageRandom(data.total_pages)
+  }
+  useEffect(() => {
+    randomList()
+  }, [pageRandom, totalPageRandom])
+
+
+  const randomListTV = async () => {
+    /* const pageRandom = Math.floor(Math.random() * 100)  */
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${pageRandomTV}
+      `)
+    setListTV(data.results)
+    setTotalPageRandomTV(data.total_pages)
+  }
+  useEffect(() => {
+    randomListTV()
+  }, [pageRandomTV, totalPageRandomTV])
+
   return (
     <MovieConntext.Provider value={{
       contentFilter, setContentFilter, year, types,
       setYear, originLanguage, page, setPage, totalPage, setTotalPage,
       type, setType, listFilm, setListFilm, sencondType, setSencondType,
       pageTV, setPageTV, totalPageTV, setTotalPageTV, typeTV, setTypeTV, yearTV, setYearTV,
-      pageTrending, setPageTrending, content, totalPageTrending, setTotalPageTrending
+      pageTrending, setPageTrending, content, totalPageTrending, setTotalPageTrending,
+      contentSearch, setPageSearch, totalPageSearch,
+      contentSearch,
+      setTypeSearch, setPageTVSearch, fetchMovieBySearch, setSearchText,
+      list, setValue, value, setPageRandom, setTotalPageRandom,  setPageRandomTV, setTotalPageRandomTV, listTV
     }}>
       <div className="App">
         <Header />

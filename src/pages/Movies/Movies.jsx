@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import classNames from 'classnames/bind'
 import axios from 'axios'
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import styles from './Movies.module.scss'
 import PaginationSize from 'components/Panigation/Panigation'
 import CardItem from 'components/CardItem/CardItem'
 import Helmet from 'components/Helmet/Helmet'
-import { MovieConntext } from '/Context';
+import { MovieConntext } from '/Context'
 
 const cx = classNames.bind(styles)
 let Year = []
@@ -80,7 +80,7 @@ const Movies = () => {
           <div className="grid wide">
             <div className="row">
               {contentFilter.map((item, index) => (
-                <div className='l-4 m-6 c-12' key={index}>
+                <div className='l-4 m-6 c-12' key={index} >
                   <CardItem name={item.title}
                     types
                     id={item.id}

@@ -27,7 +27,7 @@ const Carousel = (props) => {
     }
     useEffect(() => {
         fetchCharacter()
-    }, [])
+    }, [id])
 
     const items = credits.map((item) => (
         <div className="carouselItem">
