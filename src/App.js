@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Trending from "./pages/Trending/Trending";
 import Movies from "./pages/Movies/Movies";
 import Series from "./pages/Series/Series";
 import Search from "./pages/Search/Search";
@@ -140,7 +140,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path={"/"} element={<Home />} />
+          <Route path={"/"} element={<Trending />} />
           <Route path={"/movies"} element={<Movies />} />
           <Route path={"/movies/:id"} element={<MovieItem />} />
           <Route path={"/series"} element={<Series />} />

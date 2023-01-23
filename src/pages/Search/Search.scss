@@ -7,3 +7,23 @@
     display: flex;
     justify-content: center;
 }
+.scroll-button{
+    display: none;
+    
+}
+.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0f4984;
+    position: fixed;
+    right: 4%;
+    bottom: 100px;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}

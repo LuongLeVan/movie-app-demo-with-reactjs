@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import classNames from 'classnames/bind'
 import axios from 'axios'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import styles from './Movies.module.scss'
 import PaginationSize from 'components/Panigation/Panigation'
 import CardItem from 'components/CardItem/CardItem'
@@ -69,19 +70,79 @@ const Movies = () => {
         <div className={cx('wrapper')}>
           <div onClick={handleScroll}><span className={cx('scroll-button')}><ArrowUpwardIcon /></span></div>
           <h3>MOVIES</h3>
-          {typeMenu.map((item, index) => (
-            <div key={index} onClick={() => setType(item.id)}>{item.name}</div>
-          ))}
 
-          {Year.map((item, index) => (
-            <div key={index} onClick={() => setYear(item)}>{item}</div>
-          ))}
+         
+          <div className={cx('wrapper_select')}>
+            <div className={cx('navbar')}>
+              <div className={cx('dropdown')}>
+                <button className={cx('dropbtn')}>Type
+                  <ArrowDropDownIcon />
+                </button>
+                <div className={cx("dropdown-content")}>
+            
+                  <div className={cx("row")}>
+                    <div className={cx("column")}>
+                      {typeMenu.slice(0,6).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
+                      ))}
+                    </div>
+                    <div className={cx("column")}>
+                      {typeMenu.slice(7,13).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
+                        ))}
+                    </div>
+            
+            
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className={cx('navbar')} style={{marginLeft: '12px'}}>
+              <div className={cx('dropdown')}>
+                <button className={cx('dropbtn')}>Year
+                  <ArrowDropDownIcon />
+                </button>
+                <div className={cx("dropdown-content")}>
+            
+                  <div className={cx("row")}>
+                    <div className={cx("column")}>
+                      {Year.slice(0,6).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
+                      ))}
+                    </div>
+                    <div className={cx("column")}>
+                      {Year.slice(7,13).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
+                        ))}
+                    </div>
+
+                    <div className={cx("column")}>
+                      {Year.slice(14,20).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
+                        ))}
+                    </div>
+
+                    <div className={cx("column")}>
+                      {Year.slice(21,24).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
+                        ))}
+                    </div>
+            
+            
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      
 
           <div className="grid wide">
             <div className="row">
               {contentFilter.map((item, index) => (
-                <div className='l-4 m-6 c-12' key={index} >
-                  <CardItem name={item.title}
+                <div className="l-3 m-4 c-6" key={index}>
+                <CardItem name={item.title}
                     types
                     id={item.id}
                     date={item.release_date}

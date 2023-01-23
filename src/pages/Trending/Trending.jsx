@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import classNames from 'classnames/bind'
-import styles from './Home.module.scss'
+import styles from './Trending.module.scss'
 import CardItem from 'components/CardItem/CardItem'
 import PaginationSize from 'components/Panigation/Panigation';
 import Helmet from 'components/Helmet/Helmet';
@@ -11,7 +11,7 @@ import { MovieConntext } from 'Context';
 const cx = classNames.bind(styles)
 
 
-const Home = () => {
+const Trending = () => {
   const {setPageTrending, content, totalPageTrending } = useContext(MovieConntext)
 
 
@@ -24,15 +24,15 @@ const handleScroll = () => {
 
   return (
 
-    <Helmet title='Home'>
+    <Helmet title='Trending'>
       <div className={cx('wrapper')}>
         <div onClick={handleScroll}><span className={cx('scroll-button') }><ArrowUpwardIcon/></span></div>
         <h3 >TRENDING</h3>
         <div className="grid wide">
           <div className="row">
             {content.map((item, index) => (
-              <div className="l-4 m-6 c-12" key={index}>
-                <CardItem mediaType={item.media_type} title={item.title} mark={item.vote_average} name={item.name} id={item.id} date={item.release_date} firstDate={item.first_air_date} image={item.poster_path} />
+              <div className="l-3 m-4 c-6" key={index}>
+                <CardItem mediaType={item.media_type} title={item.title} mark={item.vote_average} name={item.name} id={item.id} date={item.release_date} dateTrending={item.first_air_date} image={item.poster_path} />
               </div>
             ))}
           </div>
@@ -43,4 +43,4 @@ const handleScroll = () => {
   )
 }
 
-export default Home
+export default Trending

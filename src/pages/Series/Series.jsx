@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import styles from './Series.module.scss'
 import classNames from 'classnames/bind'
 import Helmet from 'components/Helmet/Helmet'
@@ -30,6 +31,10 @@ const Series = () => {
     fetchListType()
   })
 
+  const handleScroll = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 
   return (
 
@@ -37,22 +42,76 @@ const Series = () => {
       <div>
         <div className={cx('wrapper')}>
           <h3>TV SERIES</h3>
-          <div style={{display: 'flex'}}>
-            <div>
-              {typeMenu.map((item, index) => (
-                <div key={index} onClick={() => setTypeTV(item.id)}>{item.name}</div>
-              ))}
+          <div onClick={handleScroll}><span className={cx('scroll-button')}><ArrowUpwardIcon /></span></div>
+
+          <div className={cx('wrapper_select')}>
+            <div className={cx('navbar')}>
+              <div className={cx('dropdown')}>
+                <button className={cx('dropbtn')}>Type
+                  <ArrowDropDownIcon />
+                </button>
+                <div className={cx("dropdown-content")}>
+            
+                  <div className={cx("row")}>
+                    <div className={cx("column")}>
+                      {typeMenu.slice(0,6).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setTypeTV(item.id)}>{item.name}</div>
+                      ))}
+                    </div>
+                    <div className={cx("column")}>
+                      {typeMenu.slice(7,13).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setTypeTV(item.id)}>{item.name}</div>
+                        ))}
+                    </div>
+            
+            
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-            {YearTV.map((item, index) => (
-                <div key={index} onClick={() => setYearTV(item)}>{item}</div>
-              ))}
+            
+            <div className={cx('navbar')} style={{marginLeft: '12px'}}>
+              <div className={cx('dropdown')}>
+                <button className={cx('dropbtn')}>Year
+                  <ArrowDropDownIcon />
+                </button>
+                <div className={cx("dropdown-content")}>
+            
+                  <div className={cx("row")}>
+                    <div className={cx("column")}>
+                      {YearTV.slice(0,6).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYearTV(item)}>{item}</div>
+                      ))}
+                    </div>
+                    <div className={cx("column")}>
+                      {YearTV.slice(7,13).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYearTV(item)}>{item}</div>
+                        ))}
+                    </div>
+
+                    <div className={cx("column")}>
+                      {YearTV.slice(14,20).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYearTV(item)}>{item}</div>
+                        ))}
+                    </div>
+
+                    <div className={cx("column")}>
+                      {YearTV.slice(21,24).map((item, index) => (
+                        <div className={cx('item_select')} key={index} onClick={() => setYearTV(item)}>{item}</div>
+                        ))}
+                    </div>
+            
+            
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="grid wide">
             <div className="row">
               {listFilm.map((item,index)=> (
-                <div className="l-4 m-6 c-12" key={index}>
+                <div className="l-3 m-4 c-6" key={index}>
                    <CardItem name={item.name}
                     sencondType
                     id={item.id}

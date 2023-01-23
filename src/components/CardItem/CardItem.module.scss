@@ -1,6 +1,6 @@
 .wrapper{
     position: relative;
-    width: 250px;
+    width: 200px;
     margin: 12px;
     border-radius: 12px;
     a{
@@ -8,6 +8,8 @@
     }
 
     .image{
+        width: 200px;
+        height: 300px;
         border-radius: 12px;
         
     }
@@ -35,8 +37,10 @@
 @media only screen and (max-width: 46.1875em) {
     .wrapper{
         width: 100%;
-       margin-left: 50%;
-       transform: translateX(-50%);
+       margin-left: 20px;
+    }
+    a{
+        font-size: 13px;
     }
 
    

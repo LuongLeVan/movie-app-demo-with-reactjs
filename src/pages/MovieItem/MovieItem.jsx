@@ -19,14 +19,10 @@ const MovieItem = () => {
     const movieByTrending = content.find((p) => p.id === Math.round(path))
     const itemMovieBySearch = contentSearch.find((p) => p.id === Math.round(path))
     const itemSelectByRandom = list.find((p) => p.id === Math.round(path))
-    /*  const items = list.find((p) => p.id === Math.round(1041896))
-     console.log(items); */
-
-
 
     const fetchVideo = async () => {
         const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${path}/videos?api_key=6de13cb06459580e8f7ab054d9dbb28e`)
-        const videos = data.results.filter(x => x.name === 'Official Trailer' && x.type === 'Trailer' || x.type ==='Trailer' || x.type ==='Opening Credits' || x.type === 'Teaser')
+        const videos = data.results.filter(x => x.name === 'Official Trailer' && x.type === 'Trailer' || x.type === 'Trailer' || x.type === 'Opening Credits' || x.type === 'Teaser')
         setVideo(videos[0].key)
     }
     useEffect(() => {
@@ -42,8 +38,6 @@ const MovieItem = () => {
         fetchTypeMenu()
     }, [])
 
-    console.log(path);
-
 
     const url = `http://image.tmdb.org/t/p/w500/${movie ? movie.backdrop_path : itemSelectByRandom ? itemSelectByRandom.backdrop_path : movieByTrending ? movieByTrending.backdrop_path : itemMovieBySearch.backdrop_path}`
 
@@ -51,14 +45,11 @@ const MovieItem = () => {
         <Helmet title={`${movie ? movie.title : itemSelectByRandom ? itemSelectByRandom.title : movieByTrending ? movieByTrending.title : itemMovieBySearch.title} (${movie ? movie.release_date.slice(0, 4) : itemSelectByRandom ? itemSelectByRandom.release_date.slice(0, 4) : movieByTrending ? movieByTrending.release_date.slice(0, 4) : itemMovieBySearch.release_date.slice(0, 4)} )`}>
             {
                 <div className='background' style={{ backgroundImage: 'url(' + url + ')' }}>
-                    <div className='container__heading'>
+                    <div className='container__heading' style={{ marginTop: '100' }}>
                         <img className='heading__poster' src={`${img_300}${movie ? movie.poster_path : itemSelectByRandom ? itemSelectByRandom.poster_path : movieByTrending ? movieByTrending.poster_path : itemMovieBySearch.poster_path}`} alt="poster" style={{ height: 400 }} />
                         <div className='heading__container-content'>
-                            <h2 className='heading__title__movie'>{movie ? movie.backdrop_path : itemSelectByRandom ? itemSelectByRandom.title : movieByTrending ? movieByTrending.title : itemMovieBySearch.title}</h2>
-                            <div>{movie ? movie.overview : itemSelectByRandom ? itemSelectByRandom.overview : movieByTrending ? movieByTrending.overview : itemMovieBySearch.overview}</div>
-                            {/*  {typeMenu.map((item, i) => (
-                        <div key={i}>{item.name}</div>
-                    ))} */}
+                            <h2 className='heading__title__movie'>{movie ? movie.title : itemSelectByRandom ? itemSelectByRandom.title : movieByTrending ? movieByTrending.title : itemMovieBySearch.title}</h2>
+                            <div className='heading__overview__movie'>{movie ? movie.overview : itemSelectByRandom ? itemSelectByRandom.overview : movieByTrending ? movieByTrending.overview : itemMovieBySearch.overview}</div>
                         </div>
                     </div>
                 </div>
@@ -70,19 +61,19 @@ const MovieItem = () => {
 
                 <h3>TRAILER</h3>
                 <div className='container__clip'>
-                    <iframe src={`https://www.youtube.com/embed/${video}`}
+                    <iframe className='container__content' src={`https://www.youtube.com/embed/${video}`}
                         frameBorder='0'
                         allow={'autoplay; encrypted-media'}
                         allowFullScreen
                         title={'video'}
-                        style={{ width: '80%', height: '100%' }}
+
                     />
                 </div>
                 <h2>SIMILAR</h2>
                 <div className="grid wide">
                     <div className="row">
                         {list.map((item, index) => (
-                            <div className='l-4 m-6 c-12' key={index} >
+                            <div className="l-3 m-4 c-6" key={index}>
                                 <CardItem name={item.title}
                                     types
                                     id={item.id}
