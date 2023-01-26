@@ -8,29 +8,29 @@ import { Link } from 'react-router-dom'
 const cx = classNames.bind(styles)
 
 const CardItem = ({
-    name,
-    id,
-    date,
-    image,
-    title,
-    firstDate,
-    mark,
-    types,
-    mediaType,
-    secondType,
-    tv,
-    movie,
-    dateSeries,
-    dateTrending
+  name,
+  id,
+  date,
+  image,
+  title,
+  firstDate,
+  mark,
+  types,
+  mediaType,
+  secondType,
+  tv,
+  movie,
+  dateSeries,
+  dateTrending
 }) => {
   return (
     <div className={cx('wrapper')} key={id}>
-      <Link to={`/${types ? 'movies' : secondType ? 'series' : mediaType === 'movie' ? 'movies' :  tv ? 'series' : movie ? 'movies' : 'series' }/${id}`}>
-        <span className={cx('mark')}>{mark===0 ? 7.5 :  mark.toString().slice(0,3)}</span>
-        <img className={cx('image')}  src={image ? `${img_300}${image}` : unavailable} alt="poster" />
-        <h3 className={cx('title')}>{name ? name : title} ({date ? date.slice(0,4) :  dateSeries ? dateSeries.slice(0,4) : dateTrending ? dateTrending.slice(0, 4) : firstDate })</h3>
+      <Link to={`/${types ? 'movies' : secondType ? 'series' : mediaType === 'movie' ? 'movies' : tv ? 'series' : movie ? 'movies' : 'series'}/${id}`}>
+        <span className={cx('mark')}>{mark === 0 ? 7.5 : mark.toString().slice(0, 3)}</span>
+        <img className={cx('image')} src={image ? `${img_300}${image}` : unavailable} alt="poster" />
+        <h3 className={cx('title')}>{name ? name : title} ({date ? date.slice(0, 4) : dateSeries ? dateSeries.slice(0, 4) : dateTrending ? dateTrending.slice(0, 4) : firstDate})</h3>
       </Link>
-      
+
     </div>
   )
 }

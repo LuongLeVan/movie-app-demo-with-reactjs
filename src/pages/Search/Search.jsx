@@ -41,9 +41,9 @@ const Search = () => {
   return (
     <Helmet title='Search'>
       <div className='wrapper__search'>
-        <div  onClick={handleScroll}>
-          <span ref={btn}  className={('scroll-button')}><ArrowUpwardIcon /></span>
-          </div>
+        <div onClick={handleScroll}>
+          <span ref={btn} className={('scroll-button')}><ArrowUpwardIcon /></span>
+        </div>
         <FormPropsTextFields setSearchText={setSearchText} fetchMovieBySearch={fetchMovieBySearch} SearchMovieList={SearchMovieList} SearchTVList={SearchTVList} />
         <div className="grid wide">
           <div className="row">

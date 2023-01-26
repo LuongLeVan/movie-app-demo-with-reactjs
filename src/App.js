@@ -1,4 +1,8 @@
+import React from "react";
+import axios from "axios";
 import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import Trending from "./pages/Trending/Trending";
 import Movies from "./pages/Movies/Movies";
 import Series from "./pages/Series/Series";
@@ -6,14 +10,13 @@ import Search from "./pages/Search/Search";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import NavbarBottom from "./components/NavbarBottom/NavbarBottom";
-import MovieItem from "./pages/MovieItem/MovieItem";
+import MovieItem from "./components/MovieItem/MovieItem";
 import { MovieConntext } from "./Context";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import SeriItem from "./pages/SeriItem/SeriItem";
+import SeriItem from "./components/SeriItem/SeriItem";
+
+
+
 function App() {
-
-
 
   const [contentFilter, setContentFilter] = useState([])
   const [page, setPage] = useState(1)
@@ -102,9 +105,9 @@ function App() {
   }, [typeSearch, pageTVSearch, pageSearch, totalPageSearch])
 
 
+  const numberRandomMovie = Math.floor(Math.random() * 60) + 1
   const randomList = async () => {
-    /* const pageRandom = Math.floor(Math.random() * 100)  */
-    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${pageRandom}
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${numberRandomMovie}
       `)
     setList(data.results)
     setTotalPageRandom(data.total_pages)
@@ -113,10 +116,11 @@ function App() {
     randomList()
   }, [pageRandom, totalPageRandom])
 
+  const numberRandomTV = Math.floor(Math.random() * 60) + 1
+
 
   const randomListTV = async () => {
-    /* const pageRandom = Math.floor(Math.random() * 100)  */
-    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${pageRandomTV}
+    const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=6de13cb06459580e8f7ab054d9dbb28e&page=${numberRandomTV}
       `)
     setListTV(data.results)
     setTotalPageRandomTV(data.total_pages)
@@ -135,7 +139,7 @@ function App() {
       contentSearch, setPageSearch, totalPageSearch,
       contentSearch,
       setTypeSearch, setPageTVSearch, fetchMovieBySearch, setSearchText,
-      list, setValue, value, setPageRandom, setTotalPageRandom,  setPageRandomTV, setTotalPageRandomTV, listTV
+      list, setValue, value, setPageRandom, setTotalPageRandom, setPageRandomTV, setTotalPageRandomTV, listTV
     }}>
       <div className="App">
         <Header />

@@ -31,22 +31,22 @@ const Carousel = (props) => {
 
     const items = credits.map((item) => (
         <div className="carouselItem">
-                    <div>
-                        <img
-                            src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable}
-                            alt={item?.name}
-                            onDragStart={handleDragStart}
-                            className="carouselItem__img"
-                        />
-                        <div style={{ textAlign: 'center' }}>
-                            <div>{item.name}</div>
-                            <div>({item.character})</div>
-                        </div>
-                    </div>
+            <div>
+                <img
+                    src={item.profile_path ? `${img_300}/${item.profile_path}` : unavailable}
+                    alt={item?.name}
+                    onDragStart={handleDragStart}
+                    className="carouselItem__img"
+                />
+                <div style={{ textAlign: 'center' }}>
+                    <div>{item.name}</div>
+                    <div>({item.character})</div>
+                </div>
+            </div>
 
         </div>
-            ))
-    
+    ))
+
 
     return (
         <div>

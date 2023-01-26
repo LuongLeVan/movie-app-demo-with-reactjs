@@ -69,24 +69,24 @@ const Movies = () => {
       <div>
         <div className={cx('wrapper')}>
           <div onClick={handleScroll}><span className={cx('scroll-button')}><ArrowUpwardIcon /></span></div>
-          <h3>MOVIES</h3>
+          <h3>Movies</h3>
 
          
           <div className={cx('wrapper_select')}>
             <div className={cx('navbar')}>
-              <div className={cx('dropdown')}>
+              <div className={cx('dropdown')} style={{backgroundColor: '#000'}}>
                 <button className={cx('dropbtn')}>Type
                   <ArrowDropDownIcon />
                 </button>
                 <div className={cx("dropdown-content")}>
             
                   <div className={cx("row")}>
-                    <div className={cx("column")}>
+                    <div className={cx("column")} >
                       {typeMenu.slice(0,6).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
                       ))}
                     </div>
-                    <div className={cx("column")}>
+                    <div className={cx("column")} >
                       {typeMenu.slice(7,13).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
                         ))}
@@ -99,7 +99,7 @@ const Movies = () => {
             </div>
             
             <div className={cx('navbar')} style={{marginLeft: '12px'}}>
-              <div className={cx('dropdown')}>
+              <div className={cx('dropdown')} style={{backgroundColor: '#000'}}>
                 <button className={cx('dropbtn')}>Year
                   <ArrowDropDownIcon />
                 </button>

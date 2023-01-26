@@ -1,31 +1,13 @@
 import React, { useRef, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+
 import logo from '/assets/tmovie.png'
 import './Header.scss'
-const mainNav = [
-  {
-    display: 'Trending',
-    path: '/',
-  },
-  {
-    display: 'Movies',
-    path: '/movies',
-  },
-  {
-    display: 'TV Series',
-    path: '/series',
-  },
-  {
-    display: 'Search',
-    path: '/search',
-  }
-];
+import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+
 
 const Header = () => {
-
-  const { pathname } = useLocation()
-
-  const activeNav = mainNav.findIndex(e => e.path === pathname)
 
   const ref = useRef(null)
 
@@ -42,28 +24,19 @@ const Header = () => {
 
   return (
     <div className='header' ref={ref}>
-      
-      <div className='header__wrapper'>
-       {/*  <div className='header__menu'>
-          {mainNav.map((item, index) => (
-            <Link to={item.path} key={index} className='header__menu-item'>
-              <span className={`${index === activeNav ? 'active' : ''}`}>{item.display}</span>
 
-            </Link>
-          ))}
-        </div> */}
-        <div className='logo-container'>
-          <Link to="/">
-{/*             <h3 className='title_App'>MOVIE APP</h3>
- */}            <img className='logo' src={logo} alt="" />
-           
-          </Link>
-        </div>
-      {/*   <div className="header__infor">
-          <span className='header__info-item'><i className='bx bx-user'></i></span>
-          <span className='header__info-item'><i className='bx bx-search'></i></span>
-          <span className='header__info-item'><i className='bx bx-cart'></i></span>
-        </div> */}
+
+      <div className='logo__container'>
+        <Link to="/" style={{textDecoration: 'none'}}>
+          <div className='title__container'>
+            <h3 className='title_App' style={{fontSize: '18px'}}>
+              MOVIE APP
+            </h3>
+       {/*      <span className='icon__title'><SmartDisplayIcon/></span> */}
+          </div>
+          <img className='logo' src={logo} alt="" />
+
+        </Link>
       </div>
     </div>
   )
