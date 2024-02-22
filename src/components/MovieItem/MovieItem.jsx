@@ -10,6 +10,7 @@ import CardItem from 'components/CardItem/CardItem'
 import PaginationSize from 'components/Panigation/Panigation'
 
 const MovieItem = () => {
+    
     const { contentFilter, content, contentSearch, list, setPageRandom, setTotalPageRandom } = useContext(MovieConntext)
     const location = useLocation()
     const [video, setVideo] = useState()

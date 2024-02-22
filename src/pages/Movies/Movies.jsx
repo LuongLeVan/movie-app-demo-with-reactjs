@@ -49,13 +49,13 @@ const Movies = () => {
 
   const fetchTypeMenu = async () => {
     const { data } = await axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=6de13cb06459580e8f7ab054d9dbb28e&language=en-US')
-    setTypeMenu(data.genres)
+    setTypeMenu(data.genres);
   }
 
 
 
   useEffect(() => {
-    fetchTypeMenu()
+    fetchTypeMenu();
   })
 
 
@@ -71,78 +71,78 @@ const Movies = () => {
           <div onClick={handleScroll}><span className={cx('scroll-button')}><ArrowUpwardIcon /></span></div>
           <h3>Movies</h3>
 
-         
+
           <div className={cx('wrapper_select')}>
             <div className={cx('navbar')}>
-              <div className={cx('dropdown')} style={{backgroundColor: '#000'}}>
+              <div className={cx('dropdown')} style={{ backgroundColor: '#000' }}>
                 <button className={cx('dropbtn')}>Type
                   <ArrowDropDownIcon />
                 </button>
                 <div className={cx("dropdown-content")}>
-            
+
                   <div className={cx("row")}>
                     <div className={cx("column")} >
-                      {typeMenu.slice(0,6).map((item, index) => (
+                      {typeMenu.slice(0, 6).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
                       ))}
                     </div>
                     <div className={cx("column")} >
-                      {typeMenu.slice(7,13).map((item, index) => (
+                      {typeMenu.slice(7, 13).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setType(item.id)}>{item.name}</div>
-                        ))}
+                      ))}
                     </div>
-            
-            
+
+
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div className={cx('navbar')} style={{marginLeft: '12px'}}>
-              <div className={cx('dropdown')} style={{backgroundColor: '#000'}}>
+
+            <div className={cx('navbar')} style={{ marginLeft: '12px' }}>
+              <div className={cx('dropdown')} style={{ backgroundColor: '#000' }}>
                 <button className={cx('dropbtn')}>Year
                   <ArrowDropDownIcon />
                 </button>
                 <div className={cx("dropdown-content")}>
-            
+
                   <div className={cx("row")}>
                     <div className={cx("column")}>
-                      {Year.slice(0,6).map((item, index) => (
+                      {Year.slice(0, 6).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
                       ))}
                     </div>
                     <div className={cx("column")}>
-                      {Year.slice(7,13).map((item, index) => (
+                      {Year.slice(7, 13).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
-                        ))}
+                      ))}
                     </div>
 
                     <div className={cx("column")}>
-                      {Year.slice(14,20).map((item, index) => (
+                      {Year.slice(14, 20).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
-                        ))}
+                      ))}
                     </div>
 
                     <div className={cx("column")}>
-                      {Year.slice(21,24).map((item, index) => (
+                      {Year.slice(21, 24).map((item, index) => (
                         <div className={cx('item_select')} key={index} onClick={() => setYear(item)}>{item}</div>
-                        ))}
+                      ))}
                     </div>
-            
-            
+
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-      
+
 
           <div className="grid wide">
             <div className="row">
               {contentFilter.map((item, index) => (
                 <div className="l-3 m-4 c-6" key={index}>
-                <CardItem name={item.title}
+                  <CardItem name={item.title}
                     types
                     id={item.id}
                     date={item.release_date}

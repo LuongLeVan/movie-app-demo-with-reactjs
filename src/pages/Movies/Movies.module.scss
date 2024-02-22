@@ -49,6 +49,7 @@
 }
 
 .dropdown .dropbtn {
+    display: block;
     font-size: 16px;
     border: none;
     outline: none;
@@ -73,9 +74,13 @@
     color: white;
 }
 
+
 .dropdown:hover .dropdown-content {
     display: block;
+    position: absolute;
 }
+
+
 
 /* Create three equal columns that floats next to each other */
 .column {
