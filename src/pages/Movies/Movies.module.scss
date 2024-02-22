@@ -3,10 +3,12 @@
     margin-top: 120px;
     min-height: 1000px;
 }
+
 .wrapper-panigation {
     display: flex;
     justify-content: center;
 }
+
 .scroll-button {
     display: flex;
     align-items: center;
@@ -18,11 +20,13 @@
     position: fixed;
     right: 4%;
     bottom: 100px;
+
     &:hover {
         cursor: pointer;
         opacity: 0.8;
     }
 }
+
 /* Mega menu */
 .navbar {
     display: flex;
@@ -84,16 +88,20 @@
 
 /* Create three equal columns that floats next to each other */
 .column {
-  float: left;
-  width: 100px;
-  padding: 3px;
-  background-color: #000;
-  height: 220px;
-  
-  & .item_select:hover{
-    cursor: pointer;
-    opacity: 0.7;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    float: left;
+    min-width: 300px;
+    padding: 3px;
+    background-color: #000;
+    height: 220px;
+
+    & .item_select:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
 }
 
 .column a {
@@ -108,13 +116,15 @@
 .column a:hover {
     background-color: #ddd;
 }
+
 .item_select {
-    margin: 12px 0;
+    margin: 12px;
 }
+
 .row {
-    display: inline-block;
     width: 100%;
 }
+
 /* Clear floats after the columns */
 .row:after {
     content: '';
